@@ -110,8 +110,8 @@ func toLogRecord(ev export.Event) opentracing.LogRecord {
 
 func toFields(input []core.KeyValue) []log.Field {
 	output := make([]log.Field, 0, len(input))
-	for key, value := range input {
-		output = append(output, log.Object(string(key), value))
+	for _, value := range input {
+		output = append(output, log.Object(string(value.Key), value.Value.AsInterface()))
 	}
 	return output
 }
