@@ -95,8 +95,8 @@ func toLogRecords(input []export.Event) []opentracing.LogRecord {
 
 func toTags(input []core.KeyValue) map[string]interface{} {
 	output := make(map[string]interface{})
-	for key, value := range input {
-		output[string(key)] = value
+	for _, value := range input {
+		output[string(value.Key)] = value.Value.AsInterface()
 	}
 	return output
 }
