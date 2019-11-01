@@ -71,6 +71,10 @@ func (e *Exporter) ExportSpan(ctx context.Context, data *export.SpanData) {
 	)
 }
 
+func (e *Exporter) Close() {
+	e.tracer.Close(context.Background())
+}
+
 func convertTraceID(id core.TraceID) uint64 {
 	first := binary.LittleEndian.Uint64(id[:8])
 	second := binary.LittleEndian.Uint64(id[8:])
