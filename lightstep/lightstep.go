@@ -3,8 +3,9 @@ package lightstep
 import (
 	"context"
 	"encoding/binary"
-	"github.com/opentracing/opentracing-go/log"
 	"sync"
+
+	"github.com/opentracing/opentracing-go/log"
 
 	"go.opentelemetry.io/api/core"
 	"go.opentelemetry.io/sdk/export"
@@ -17,10 +18,10 @@ import (
 )
 
 type Config struct {
-	accessToken string
-	host        string
-	port        int
-	serviceName string
+	AccessToken string
+	Host        string
+	Port        int
+	ServiceName string
 }
 
 type Exporter struct {
@@ -30,9 +31,9 @@ type Exporter struct {
 
 func marshalConfigToOptions(c Config) lsclient.Options {
 	opts := lsclient.Options{}
-	opts.AccessToken = c.accessToken
-	opts.Collector.Host = c.host
-	opts.Collector.Port = c.port
+	opts.AccessToken = c.AccessToken
+	opts.Collector.Host = c.Host
+	opts.Collector.Port = c.Port
 	opts.Collector.Plaintext = false
 	opts.Initialize()
 	return opts
