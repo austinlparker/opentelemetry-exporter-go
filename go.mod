@@ -1,4 +1,4 @@
-module github.com/lightstep/opentelemetry-exporter-go
+module github.com/austinlparker/opentelemetry-exporter-go
 
 go 1.13
 
